@@ -97,7 +97,6 @@ const config: Config = {
           950: '#170206',
         },
       },
-
     },
   },
   plugins: [],
