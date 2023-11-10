@@ -1,13 +1,36 @@
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
+  darkMode: ['class'],
   content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: '2rem',
+      screens: {
+        '2xl': '1400px',
+      },
+    },
     extend: {
+      keyframes: {
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
+        },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
+        },
+      },
+      animation: {
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
@@ -31,20 +54,20 @@ const config: Config = {
         bold: '700',
       },
       colors: {
-        'text': {
-          50: '#fef7e7',
-          100: '#fcefcf',
-          200: '#fae09e',
-          300: '#f7d06e',
-          400: '#f5c13d',
-          500: '#f2b10d',
-          600: '#c28e0a',
-          700: '#916a08',
-          800: '#614705',
-          900: '#302303',
-          950: '#181201',
+        text: {
+          50: '#fee7e7',
+          100: '#fccfcf',
+          200: '#fa9e9e',
+          300: '#f76e6e',
+          400: '#f53d3d',
+          500: '#f20d0d',
+          600: '#c20a0a',
+          700: '#910808',
+          800: '#610505',
+          900: '#300303',
+          950: '#180101',
         },
-        'background': {
+        background: {
           50: '#f2f0f4',
           100: '#e4e2e9',
           200: '#cac5d3',
@@ -55,9 +78,9 @@ const config: Config = {
           700: '#494257',
           800: '#312c3a',
           900: '#18161d',
-          950: '#0c0b0f',
+          950: '#0A090C',
         },
-        'primary': {
+        primary: {
           50: '#f9ebee',
           100: '#f3d8dc',
           200: '#e7b1b9',
@@ -70,7 +93,7 @@ const config: Config = {
           900: '#270c10',
           950: '#140608',
         },
-        'secondary': {
+        secondary: {
           50: '#fce8eb',
           100: '#fad1d7',
           200: '#f5a3af',
@@ -83,7 +106,7 @@ const config: Config = {
           900: '#2e050b',
           950: '#170306',
         },
-        'accent': {
+        accent: {
           50: '#fde8eb',
           100: '#fad1d7',
           200: '#f5a3af',
@@ -99,6 +122,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwindcss-animate')],
 }
 export default config
